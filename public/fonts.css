@@ -1,0 +1,44 @@
+/* vietnamese */
+@font-face {
+  font-family: 'Birthstone';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('fonts/Birthstone_400.woff2') format('woff2');
+  src: url('fonts/Birthstone-Regular.ttf') format('ttf'); 
+}
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('fonts/Poppins_300.woff2') format('woff2');
+  src: url('fonts/Poppins-Light.ttf') format('ttf');
+
+}
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('fonts/Poppins_400.woff2') format('woff2');
+  src: url('fonts/Poppins-Regular.ttf') format('ttf');
+}
+
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('fonts/Poppins_500.woff2') format('woff2');
+  src: url('fonts/Poppins-Medium.ttf') format('ttf');
+}
+
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('fonts/Poppins_600.woff2') format('woff2');
+  src: url('fonts/Poppins-SemiBold.ttf') format('ttf');
+}

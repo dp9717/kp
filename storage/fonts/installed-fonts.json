@@ -1,0 +1,14 @@
+{
+    "certificate": {
+        "normal": "certificate_normal_a98cc5b3d3e7194aa74c6154095388f7"
+    },
+    "poppins": {
+        "300": "C:\\xampp\\htdocs\\aol2\\storage\\fonts\/poppins_300_9937d63ce8a01a5852ac7cf9e5d92ee0",
+        "normal": "C:\\xampp\\htdocs\\aol2\\storage\\fonts\/poppins_normal_6f19c267fabff679d8c0f5261877c001",
+        "600": "poppins_600_bc134ae32a19b378cd532df068a27303"
+    },
+    "calibri": {
+        "normal": "C:\\xampp\\htdocs\\kp\\storage\\fonts\/calibri_normal_cf4ab435741597c31001d5b54a41d53c",
+        "bold": "calibri_bold_62b15d57be6c02ba443041bc57a6529d"
+    }
+}
