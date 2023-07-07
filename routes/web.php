@@ -38,6 +38,8 @@ Route::name('user.')->group(function(){
         Route::post('check-login','chkLogin')->name('chklogin');
         Route::get('register','register')->name('register');
         Route::post('user-store','store')->name('store');
+        Route::get('user-mail-token/{token}','mailPasswordView')->name('mailPasswordView');
+        Route::post('user-mail-token-store/{token}','tokenStore')->name('tokenStore');
 
     });
 

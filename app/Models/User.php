@@ -33,7 +33,8 @@ class User extends Authenticatable
         'slug',
         'status',
         'resume_file',
-        'other_file'
+        'other_file',
+        'token_key'
     ];
 
     /**

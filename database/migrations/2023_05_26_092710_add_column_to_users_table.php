@@ -26,6 +26,7 @@ return new class extends Migration
 
             $table->integer('qualification')->default(1);
             $table->integer('profession')->default(1);
+            $table->text('token_key')->nullable();
 
         });
     }

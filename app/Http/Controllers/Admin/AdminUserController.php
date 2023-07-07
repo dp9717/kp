@@ -20,6 +20,8 @@ use App\Models\UserAddress;
 use App\Http\Requests\Admin\UserRequest;
 use App\Exports\Admin\UserExport;
 use Excel;
+use Mail;
+use App\Mail\Admin\UserApprovalMail;
 class AdminUserController extends Controller
 {
     function __construct($foo = null)
@@ -143,6 +145,7 @@ class AdminUserController extends Controller
         }
         $data->qualification=Helper::removetag($request->qualification);
         $data->profession=Helper::removetag($request->profession);
+        $data->token_key = Helper::randtoken();
          if($data->save()){
             $data->slug=Helper::userCode($data->id);
             $data->save();
@@ -180,7 +183,13 @@ class AdminUserController extends Controller
             $u_role->user_id = $data->id;
             $u_role->role_id = Role::id($request->role);
             $u_role->save();
-            
+            //email
+                $m_data['subject'] = "Your Account verification for SSRDP’s Kaushal Path 1.0";
+                $data->update(['token_key'=>Helper::randtoken()]);
+                $m_data['link'] = route('user.mailPasswordView',$data->token_key);
+                $m_data['data'] = $data;
+                Mail::to([$data->mail])->send(new UserApprovalMail($m_data));
+            // end email token_key
             return to_route('admin.users')->with('success', 'Saved successfully !');
          }else{
              return back()->with('error', 'Failed ! try again.');
@@ -316,8 +325,17 @@ class AdminUserController extends Controller
     public function statusChange(Request $request,$slug)
     {
         $request->validate(['status'=>'required|numeric|in:1,2']);
-       $data=User::where('slug',$slug)->where('is_admin',1)->first();
+        $data=User::where('slug',$slug)->where('is_admin',1)->first();
         if($data){
+            if ($request->status==1) {
+                //email
+                    $m_data['subject'] = "Your Account verification for SSRDP’s Kaushal Path 1.0";
+                    $data->update(['token_key'=>Helper::randtoken()]);
+                    $m_data['link'] = route('user.mailPasswordView',$data->token_key);
+                    $m_data['data'] = $data;
+                    Mail::to([$data->email])->send(new UserApprovalMail($m_data));
+                // end email token_key
+            }
             $data->status=$request->status;
             $data->save();
             return back()->with('success', 'Status changed successfully !');

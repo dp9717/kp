@@ -192,4 +192,25 @@ class UserController extends Controller
              return back()->with('error', 'Failed ! try again.');
          }
     }
+
+    public function mailPasswordView($value='')
+    {
+        $data=User::where('token_key',$value)->where('is_admin',1)->first();
+        return view('employee.auth.mailPasswordView', ['data'=>$data]);
+    }
+
+    public function tokenStore(Request $request,$value='')
+    {
+        $request->validate(['new_password'=>'required|min:8','confirm_password'=>'required|same:new_password']);
+        $data=User::where('token_key',$value)->where('is_admin',1)->first();
+        if ($data) {
+            $data->fill([
+            'password' => \Hash::make($request->new_password),
+            'original_password' => $request->new_password,'token_key'=>null
+            ])->save();
+            return to_route('user.login')->with('success', 'Password changed Successfully.');
+        }else{
+            return to_route('user.login')->with('error', 'Failed ! User not found.');
+        }
+    }
 }

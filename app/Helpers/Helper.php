@@ -286,4 +286,18 @@ class Helper{
             return $data;
         }
     }
+
+    public static function randtoken($len=64,$value='')
+    {
+    	$value = $value ? time() : $value;
+    	$characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'.$value;
+	    $randomString = '';
+	 
+	    for ($i = 0; $i < $len; $i++) {
+	        $index = rand(0, strlen($characters) - 1);
+	        $randomString .= $characters[$index];
+	    }
+	 
+	    return $randomString;
+    }
 }
